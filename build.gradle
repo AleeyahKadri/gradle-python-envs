@@ -1,6 +1,7 @@
 plugins {
     id 'idea'
     id 'groovy'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.20'
     id 'com.gradle.plugin-publish' version '1.2.1'
     id 'com.palantir.git-version' version '3.1.0'
     id 'maven-publish'
@@ -12,6 +13,10 @@ project.group = 'com.jetbrains.python'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
+}
+
+kotlin {
+    jvmToolchain(21)
 }
 
 repositories {
@@ -28,6 +33,7 @@ publishing {
 
 dependencies {
     implementation gradleApi()
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
 
     testImplementation(
             gradleTestKit(),
